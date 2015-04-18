@@ -37,7 +37,20 @@ Saturday morning, 9:00 am
 Added a missing wireframe (tag CRUD).  I don't like my scheme where I present the flat tag space.  I think it puts too much on the user.  Ah well, nothing for it.  I'll put that on the todo list.  The first item on the TODO list:  create a TODO list!
 Time to start creating models!
 
+Query:  do I use postgres native types for the selection model?  After thinking about it:  no.  There's very little geometry that I contemplate with the selection (I won't provide a mechanism for scaling, e.g.), so using the native type for point, polygon just adds complexity and expected translation problems when I go from client to server.
+
+Note:  renamed SelectionTag to be Tag, so that the join table could be selection_tag, not selection_selection_tag
+
+Generated the models, but there's a bit of fixup.  They need to be hand-tweeked, db:migrate, db:seed, and tests fixed.  After that, constraints.
+
+==== 30 minutes consumed, 1 hr 50 minutes total ====
+Revised schedule:
+2 hours set up -- design  / layout (done)
+*2 hours model + controller -- create / constrain / test
+2 hours layout -- views, a wee bit of javascript
+2 hours deploy -- aws, github, etc
 
 
 TODO
 Revisit flat tag space concept
+Migrate to postgres
