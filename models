@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# save some typing
+scaffold="rails generate scaffold"
+
+$scaffold Image url:string validated:boolean
+$scaffold Selection start_x:integer start_y:integer end_x:integer end_y:integer
+$scaffold Type name:string
+$scaffold Tag type:belongs_to value:string
+
+# the join table
+rails generate model SelectionTag selection:references tag:references
+
+# note:  we'll need to fix up the models a bit, but that can be manual.

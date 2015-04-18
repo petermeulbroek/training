@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start x:</strong>
+  <%= @selection.start_x %>
+</p>
+
+<p>
+  <strong>Start y:</strong>
+  <%= @selection.start_y %>
+</p>
+
+<p>
+  <strong>End x:</strong>
+  <%= @selection.end_x %>
+</p>
+
+<p>
+  <strong>End y:</strong>
+  <%= @selection.end_y %>
+</p>
+
+<%= link_to 'Edit', edit_selection_path(@selection) %> |
+<%= link_to 'Back', selections_path %>
