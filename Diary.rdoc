@@ -33,10 +33,11 @@ Friday evening, 8:45 pm
 Worked on wireframes.  I've gotten the idea that there can be multiple selections in each photo, and multiple tags for each selection.  I think there should be some hierarchy to the tags structure -- It feels clumsy that all the tags are on the same level.  With more time, I would divide the tags into some sort of hierarchy, to ease navigation.  It should be very fast to choose "stoplight" (or even have that preset), then identify the three things about a stoplight (working/not working, color, "has-left-turn-signal").  I'll implement what I have so far, and go back (if there's time)
 
 ==== 35 minutes consumed, 1 hr 20 minutes total ====
+Saturday morning, 9:00 am
+Added a missing wireframe (tag CRUD).  I don't like my scheme where I present the flat tag space.  I think it puts too much on the user.  Ah well, nothing for it.  I'll put that on the todo list.  The first item on the TODO list:  create a TODO list!
+Time to start creating models!
 
 
 
-
-
-
-
+TODO
+Revisit flat tag space concept
