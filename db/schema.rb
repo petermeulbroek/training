@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418200143) do
+ActiveRecord::Schema.define(version: 20150418213951) do
 
   create_table "image_tags", force: :cascade do |t|
     t.integer  "image_id"
@@ -47,15 +47,20 @@ ActiveRecord::Schema.define(version: 20150418200143) do
     t.integer  "end_y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "image_id"
   end
+
+  add_index "selections", ["image_id"], name: "index_selections_on_image_id"
 
   create_table "tags", force: :cascade do |t|
     t.integer  "type_id"
     t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "selection_id"
   end
 
+  add_index "tags", ["selection_id"], name: "index_tags_on_selection_id"
   add_index "tags", ["type_id"], name: "index_tags_on_type_id"
 
   create_table "types", force: :cascade do |t|

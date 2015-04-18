@@ -4,9 +4,9 @@
 scaffold="rails generate scaffold"
 
 $scaffold Image url:string validated:boolean
-$scaffold Selection start_x:integer start_y:integer end_x:integer end_y:integer
+$scaffold Selection image:belongs_to start_x:integer start_y:integer end_x:integer end_y:integer
 $scaffold Type name:string
-$scaffold Tag type:belongs_to value:string
+$scaffold Tag type:belongs_to selection: belongs_to value:string
 
 $scaffold ImageTag image:belongs_to name:string value:string
 # the join table
