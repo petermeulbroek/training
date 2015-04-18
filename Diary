@@ -1,0 +1,42 @@
+Friday Evening, 7:20 pm.
+Started code.  Created the initial rails scaffolding (sans data model) to get some place to put docs, as well as created a git repo.  I'll post this to github later.
+
+Some initial thoughts:
+
+1.  Technology:  Rails for the app (due to its powerful scaffolding), SQLite for a backend (Postgres if there's time in the end...lets get something working, and save the 20 minutes to get PG set up).  AWS for hosting.
+
+2.  Create an ERD -- there are images, items (of interest), and tags on those items.  Tags each live in a genus. The genera are constrained to a finite set, but extensible.
+
+2.  Create a simple wireframe
+
+3.  Instantiate the ERD.  At least get models, contstraints, and tests together.
+
+4.  Go beyond rails's CRUD to instantiate the first view.  Forget about users, auth, ownership, etc for now (those will be important, but not for the first cut)
+
+5.  Get app hosted, so that it can be shared.  Code goes into github, app goes on aws.  That may well imply postgres and passenger.
+
+6. If there's time, start working on the javascript.  Save this for last, as it's my weakest part, and could be a huge time sink.
+
+==== 20 min consumed ===
+
+Friday Evening, 8:00 pm
+Working on ERD.  The classes are:
+Image -- the representation of the remotely-stored image.
+ImageTag -- meta-information on the image.  Might include a category, e.g.  We don't know, so let's leave this open
+Selection -- One or more cuts from the image.  A geometric selection of a particular image
+SelectionTag -- Constrained tag of the selection.  We constrain this to avoid variations on a theme:  "green" = "Green" = "go" are all the same values for a stop light that is green.
+Type -- the constrained (but extensible) set for selection_tags.  Note that these may well be in a hierarchy, but we'll fake that for now by adding a delimiter in the name field, so that "Status|Color" and "Status|Working" are related by convention.
+
+==== 25 minutes consumed, 45 minutes total ====
+
+Friday evening, 8:45 pm
+Worked on wireframes.  I've gotten the idea that there can be multiple selections in each photo, and multiple tags for each selection.  I think there should be some hierarchy to the tags structure -- It feels clumsy that all the tags are on the same level.  With more time, I would divide the tags into some sort of hierarchy, to ease navigation.  It should be very fast to choose "stoplight" (or even have that preset), then identify the three things about a stoplight (working/not working, color, "has-left-turn-signal").  I'll implement what I have so far, and go back (if there's time)
+
+==== 35 minutes consumed, 1 hr 20 minutes total ====
+
+
+
+
+
+
+

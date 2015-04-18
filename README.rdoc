@@ -1,5 +1,29 @@
 == README
 
+General philosophy
+------------------
+1.  working code is important.  Hence the choice of rails, which gives a very quick scaffolding.
+
+2.  tested code is important.  All code will have both controller tests and a few model tests
+
+3.  A little (far too little) time will be spent on design docs:  ERD and wireframes.  These will be included
+
+4.  All code will be VC'd in git, and exported to github
+
+5.  working software will be hosted on AWS
+
+
+
+Background
+----------
+This is an application to built to demonstrate a tagging utility.  It'll have the following assumptions:
+
+1.  all images that are to be annotated are stored in an S3 bucket.  Configuration of which is initially hard-coded, though keys, etc will *not* be.
+
+2.  New files are put in that bucket by another process.  That process is independant of this app.  That same process provides a manifest of files to be pulled.
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
