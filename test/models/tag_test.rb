@@ -22,7 +22,6 @@ class TagTest < ActiveSupport::TestCase
     t = Tag.new(value: "a tag")
     t.type = type
     assert t.save
-    
   end
   # test "the truth" do
   #   assert true
