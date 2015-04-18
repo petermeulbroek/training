@@ -54,8 +54,8 @@ Revised schedule:
 
 Minor model update.  I forgot to include ImageTag in the original model generation, which was serendipitous, as I think we can get away with a one-to-many (simpler).
 
-
-
+Code tests pass!  I need to add a few more tests, then start on seed data
+==== 50 minutes consumed, 2 hr 40 minutes total ====
 
 
 
