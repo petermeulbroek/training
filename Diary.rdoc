@@ -44,11 +44,19 @@ Note:  renamed SelectionTag to be Tag, so that the join table could be selection
 Generated the models, but there's a bit of fixup.  They need to be hand-tweeked, db:migrate, db:seed, and tests fixed.  After that, constraints.
 
 ==== 30 minutes consumed, 1 hr 50 minutes total ====
+Saturday afternoon:  3:10 pm
+
 Revised schedule:
 2 hours set up -- design  / layout (done)
-*2 hours model + controller -- create / constrain / test
+*2 hours model + controller -- create / constrain / seed / test
 2 hours layout -- views, a wee bit of javascript
 2 hours deploy -- aws, github, etc
+
+Minor model update.  I forgot to include ImageTag in the original model generation, which was serendipitous, as I think we can get away with a one-to-many (simpler).
+
+
+
+
 
 
 TODO

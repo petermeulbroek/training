@@ -3,6 +3,8 @@ require 'test_helper'
 class ImagesControllerTest < ActionController::TestCase
   setup do
     @image = images(:one)
+    @fresh_url = "http://example.com"
+    @fresh_reviewed = "false"
   end
 
   test "should get index" do
@@ -18,7 +20,7 @@ class ImagesControllerTest < ActionController::TestCase
 
   test "should create image" do
     assert_difference('Image.count') do
-      post :create, image: { url: @image.url, validated: @image.validated }
+      post :create, image: { url: @fresh_url, reviewed: @fresh_reviewed }
     end
 
     assert_redirected_to image_path(assigns(:image))
@@ -35,7 +37,7 @@ class ImagesControllerTest < ActionController::TestCase
   end
 
   test "should update image" do
-    patch :update, id: @image, image: { url: @image.url, validated: @image.validated }
+    patch :update, id: @image, image: { url: @image.url, reviewed: @image.reviewed }
     assert_redirected_to image_path(assigns(:image))
   end
 

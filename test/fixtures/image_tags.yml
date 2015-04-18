@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyString
-  reviewed: false
+  image_id: 
+  name: MyString
+  value: MyString
 
 two:
-  url: MyString1
-  reviewed: false
+  image_id: 
+  name: MyString
+  value: MyString

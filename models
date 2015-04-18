@@ -8,6 +8,7 @@ $scaffold Selection start_x:integer start_y:integer end_x:integer end_y:integer
 $scaffold Type name:string
 $scaffold Tag type:belongs_to value:string
 
+$scaffold ImageTag image:belongs_to name:string value:string
 # the join table
 rails generate model SelectionTag selection:references tag:references
 
