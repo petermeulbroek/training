@@ -6,5 +6,32 @@
 </div>
 <div class="image_selection">
 </div>
-<p>Using your mouse, make a selection</p>
+<!-- put selection logic here -->
+<div id="no_selection">
+    <p>Using your mouse, make a selection</p>
+</div>
+<!-- this goes in a partial once figured out -->
+<div id="select_exists">
+    <p>To add another selection, use your mouse</p>
+    <%= form_for(@image) do |f| %>
+        <% if @image.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+                
+                <ul>
+                    <% @image.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div class="field">
+            <%= collection_select(:selection, :ordinal, @image.selections, :id, :ordinal) %>
+        </div>
+        <div class="actions">
+            <%= f.submit %>
+        </div>
+    <% end %>
+</div>
+<!-- end selection partial -->
 <%= link_to 'Back', images_path %>

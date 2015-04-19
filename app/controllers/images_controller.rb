@@ -10,6 +10,13 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    # put click logic here
+    if params['clicked']
+      @image.selections.build(ordinal: @image.selections.length)
+    end
+
+    # selections
+
   end
 
   # GET /images/new

@@ -18,7 +18,7 @@ ImageTag.create(image: i1, name: "tag2", value: "I'm here, too")
 ImageTag.create(image: i3, name: "tag3", value: "I'm here, aussi")
 
 
-s1 = Selection.create(image: i1, start_x: 0, start_y: 0, end_x: 100, end_y: 100)
+s1 = Selection.create(image: i1, start_x: 0, start_y: 0, end_x: 100, end_y: 100, ordinal: 1)
 type1 = Type.create(name: "stoplight")
 tag1 = type1.tags.build(value: "green")
 tag1.selection = s1

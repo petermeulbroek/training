@@ -91,6 +91,9 @@ I don't know how to draw the annotation.  Don't want this to slow me down.  I'll
 Sunday Afternoon, 4:45 pm
 Going to put a selection using a div, and fake its appearence with a passed parameter.  Time to get going on the rest of the layout!
 
+Got the elements of the "selection" section in place.  These need to be laid out with css
+
+==== 50 minutes consumed, 5 hours 25 minutes total ===
 
 TODO
 Migrate to bootstrap
