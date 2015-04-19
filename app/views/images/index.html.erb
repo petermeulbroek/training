@@ -14,7 +14,10 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.url %></td>
+          <td><%= link_to edit_image_path(image) do %>
+              <%= image_tag image.url %>
+          <% end %>
+          </td>
         <td><%= image.reviewed %></td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>

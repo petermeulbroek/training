@@ -70,6 +70,11 @@ Time to start layout.  Since I'm not using any kind of user model or individual 
 
 We first need an index page, so I'll add one.
 
+Done.  Images show.  Now they need to be scaled.  
+
+==== 35 minutes consumed, 3 hours 45 minutes total ====
+
+
 
 
 TODO
