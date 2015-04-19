@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Url</th>
-      <th>Reviewed</th>
+      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +13,7 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-          <td><%= link_to edit_image_path(image) do %>
-              <%= image_tag image.url %>
-          <% end %>
-          </td>
-        <td><%= image.reviewed %></td>
+          <td><%= link_to  image_tag(image.url, width: "50%", class: (image.reviewed ? "img_reviewed" : "img_unreviewed") ), edit_image_path(image)%></td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>

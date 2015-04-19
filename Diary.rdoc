@@ -74,9 +74,11 @@ Done.  Images show.  Now they need to be scaled.
 
 ==== 35 minutes consumed, 3 hours 45 minutes total ====
 
-
+Sunday afernoon, 1:45 pm
+Fixed up the size using html.  Probably want to do this using CSS.  We'll want the entire layout in bootstrap BTW.  Add it at the top of the TODO
 
 
 TODO
+Migrate to bootstrap
 Revisit flat tag space concept
 Migrate to postgres
