@@ -82,7 +82,18 @@ a.  get image in place
 b.  make a selection
 c.  Add tags
 
+.. time passes ..
+I don't know how to draw the annotation.  Don't want this to slow me down.  I'll add it to the backlog, and fake it by drawing a rectangle
+
+
+==== 50 minutes consumed 4 hours 35 minutes total ====
+
+Sunday Afternoon, 4:45 pm
+Going to put a selection using a div, and fake its appearence with a passed parameter.  Time to get going on the rest of the layout!
+
+
 TODO
 Migrate to bootstrap
+Use a javascript library to draw rectangle (Zurb or annotator?)
 Revisit flat tag space concept
 Migrate to postgres
