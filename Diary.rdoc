@@ -61,7 +61,14 @@ Saturday Afternoon: 5:00 pm
 Arg!  selection belongs_to an image.  Got to add that.  Arg2!  Tag belongs_to a selection.  Was I on crack this morning?
 Fixed both, tests pass.
 
-Seed data added
+Seed data added.  Time to fire up the crud interface!  And it works!!
+
+==== 30 minutes consumed.  3 hours 10 minutes total ===
+
+Saturday night, 8:50 pm.
+Time to start layout.  Since I'm not using any kind of user model or individual configuration, time to code the first screen (display an image).
+
+We first need an index page, so I'll add one.
 
 
 
