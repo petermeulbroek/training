@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @image.url %>
-</p>
+<div>
+    <p><%= @image.url %></p>
+  <%= image_tag(@image.url, class: (@image.reviewed ? "img_reviewed" : "img_unreviewed") ) %>
+</div>
 
-<p>
-  <strong>Validated:</strong>
-  <%= @image.reviewed %>
-</p>
-
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<p>Using your mouse, make a selection</p>
 <%= link_to 'Back', images_path %>

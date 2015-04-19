@@ -76,7 +76,11 @@ Done.  Images show.  Now they need to be scaled.
 
 Sunday afernoon, 1:45 pm
 Fixed up the size using html.  Probably want to do this using CSS.  We'll want the entire layout in bootstrap BTW.  Add it at the top of the TODO
+I'll move on to the main screen, and revisit the index page when that's done.  I want the app functional before I make it pretty.
 
+a.  get image in place
+b.  make a selection
+c.  Add tags
 
 TODO
 Migrate to bootstrap

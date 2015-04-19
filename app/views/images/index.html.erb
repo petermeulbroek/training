@@ -13,7 +13,7 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-          <td><%= link_to  image_tag(image.url, width: "50%", class: (image.reviewed ? "img_reviewed" : "img_unreviewed") ), edit_image_path(image)%></td>
+          <td><%= link_to  image_tag(image.url, width: "50%", class: (image.reviewed ? "img_reviewed" : "img_unreviewed") ), image_path(image)%></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
