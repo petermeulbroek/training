@@ -20,9 +20,9 @@
         <td><%= selection.start_y %></td>
         <td><%= selection.end_x %></td>
         <td><%= selection.end_y %></td>
-        <td><%= link_to 'Show', selection %></td>
-        <td><%= link_to 'Edit', edit_selection_path(selection) %></td>
-        <td><%= link_to 'Destroy', selection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', image_selection_path(@image, selection) %></td>
+        <td><%= link_to 'Edit', edit_image_selection_path(@image, selection) %></td>
+        <td><%= link_to 'Destroy', image_selection_path(@image, selection), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Selection', new_selection_path %>
+<%= link_to 'New Selection', new_image_selection_path(@image) %>

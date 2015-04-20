@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @selection %> |
-<%= link_to 'Back', selections_path %>
+<%= link_to 'Show', image_selection_path(@image, @selection) %> |
+<%= link_to 'Back', image_selections_path(@image) %>

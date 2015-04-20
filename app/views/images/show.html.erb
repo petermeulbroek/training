@@ -4,14 +4,11 @@
     <p><%= @image.url %></p>
   <%= link_to image_tag(@image.url, class: (@image.reviewed ? "img_reviewed" : "img_unreviewed")), image_path(@image, clicked: "true")  %>
 </div>
-<div class="image_selection">
-</div>
-<!-- put selection logic here -->
-<div id="no_selection">
-    <p>Using your mouse, make a selection</p>
+<div id=add_selection">
+    <%= link_to 'New selection', new_image_selection_path(@image) %>
 </div>
 <div id="select_exists">
-    <%= render partial: 'selection' %>
+    <%= link_to 'Show selections', image_selections_path(@image) %>
 </div>
 
 <div id="tag">

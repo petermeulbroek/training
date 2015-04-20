@@ -26,7 +26,7 @@ class ImageTagTest < ActiveSupport::TestCase
   end
 
   test "image_tag belongs to an image" do
-    image = images(:one)
+    image = images(:image1)
     t = ImageTag.new(name: "foo", value: "bar")
     t.image = image
     assert t.save

@@ -18,10 +18,6 @@ class ImagesController < ApplicationController
     # selections
   end
 
-  def set_selection
-    selection =  @image.selections.find_by(ordinal: params['selection']['ordinal'])
-    redirect_to selection_path(selection)
-  end
   
   # GET /images/new
   def new

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ImageTest < ActiveSupport::TestCase
   setup do
-    @image = images(:one)
+    @image = images(:image1)
   end
 
   test "fixture is valid" do

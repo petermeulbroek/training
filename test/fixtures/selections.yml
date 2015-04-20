@@ -5,6 +5,7 @@ one:
   start_y: 1
   end_x: 1
   end_y: 1
+  image: image1
 
 two:
   start_x: 1

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ImagesControllerTest < ActionController::TestCase
   setup do
-    @image = images(:one)
+    @image = images(:image1)
     @fresh_url = "http://example.com"
     @fresh_reviewed = "false"
   end

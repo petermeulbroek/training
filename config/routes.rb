@@ -7,12 +7,15 @@ Rails.application.routes.draw do
 
   resources :types
 
-  resources :selections
+  # resources :selections
 
   resources :images do
     member do
       patch :set_selection
     end
+
+    resources :selections    
+        
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
