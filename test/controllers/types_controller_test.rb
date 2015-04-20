@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TypesControllerTest < ActionController::TestCase
   setup do
-    @type = types(:one)
+    @type = types(:type1)
   end
 
   test "should get index" do

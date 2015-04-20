@@ -26,7 +26,6 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     @tag.type = @type
-    byebug;
     respond_to do |format|
       if @tag.save
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
@@ -42,7 +41,6 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1.json
   def update
     @tag.type = @type
-    byebug;
     respond_to do |format|
       if @tag.update(tag_params)
         format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
@@ -71,7 +69,8 @@ class TagsController < ApplicationController
     end
 
     def set_type
-      @type = Type.find(params[:type][:id])
+      byebug
+      @type = Type.find(tag_params[:type_id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params

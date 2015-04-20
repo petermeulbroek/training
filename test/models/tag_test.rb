@@ -18,7 +18,7 @@ class TagTest < ActiveSupport::TestCase
   end
 
   test "tag belongs to a type" do
-    type = types(:one)
+    type = types(:type1)
     t = Tag.new(value: "a tag")
     t.type = type
     assert t.save

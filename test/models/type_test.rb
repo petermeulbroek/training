@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TypeTest < ActiveSupport::TestCase
   setup do
-    @type = types(:one)
+    @type = types(:type1)
   end
 
   test "fixture works" do
