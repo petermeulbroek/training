@@ -95,6 +95,13 @@ Got the elements of the "selection" section in place.  These need to be laid out
 
 ==== 50 minutes consumed, 5 hours 25 minutes total ===
 
+Sunday Evening, 8 pm
+The CSS debt gets bigger.  I'll want to move the sections created into partials for ease of editing and organization.
+Ok, I'm running out of time.  I'll use some much dirtier methods with nested routes to avoid some of the multiple-form stuff
+
+== 50 minutes consumed, 6 hours 15 minutes total ====
+
+
 TODO
 Migrate to bootstrap
 Use a javascript library to draw rectangle (Zurb or annotator?)

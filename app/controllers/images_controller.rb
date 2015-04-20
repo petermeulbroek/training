@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :set_selection]
 
   # GET /images
   # GET /images.json
@@ -16,9 +16,13 @@ class ImagesController < ApplicationController
     end
 
     # selections
-
   end
 
+  def set_selection
+    selection =  @image.selections.find_by(ordinal: params['selection']['ordinal'])
+    redirect_to selection_path(selection)
+  end
+  
   # GET /images/new
   def new
     @image = Image.new
@@ -76,6 +80,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:url, :reviewed)
+      params.require(:image).permit(:url, :reviewed, :selection => [:ordinal])
     end
 end
