@@ -1,5 +1,5 @@
 ==Diary
-*Friday Evening, 7:20 pm.*
+===Friday Evening, 7:20 pm.
 ---
 Started code.  Created the initial rails scaffolding (sans data model) to get some place to put docs, as well as created a git repo.  I'll post this to github later.
 
@@ -21,7 +21,7 @@ Some initial thoughts:
 
 _20 min consumed_
 
-Friday Evening, 8:00 pm
+===Friday Evening, 8:00 pm
 ---
 Working on ERD.  The classes are:
 Image -- the representation of the remotely-stored image.
@@ -32,13 +32,13 @@ Type -- the constrained (but extensible) set for selection_tags.  Note that thes
 
 _25 minutes consumed, 45 minutes total_
 
-Friday evening, 8:45 pm
+===Friday evening, 8:45 pm
 ---
 Worked on wireframes.  I've gotten the idea that there can be multiple selections in each photo, and multiple tags for each selection.  I think there should be some hierarchy to the tags structure -- It feels clumsy that all the tags are on the same level.  With more time, I would divide the tags into some sort of hierarchy, to ease navigation.  It should be very fast to choose "stoplight" (or even have that preset), then identify the three things about a stoplight (working/not working, color, "has-left-turn-signal").  I'll implement what I have so far, and go back (if there's time)
 
 _35 minutes consumed, 1 hr 20 minutes total_
 
-Saturday morning, 9:00 am
+===Saturday morning, 9:00 am
 ---
 Added a missing wireframe (tag CRUD).  I don't like my scheme where I present the flat tag space.  I think it puts too much on the user.  Ah well, nothing for it.  I'll put that on the todo list.  The first item on the TODO list:  create a TODO list!
 Time to start creating models!
@@ -51,7 +51,7 @@ Generated the models, but there's a bit of fixup.  They need to be hand-tweeked,
 
 _30 minutes consumed, 1 hr 50 minutes total_
 
-Saturday afternoon:  3:10 pm
+===Saturday afternoon:  3:10 pm
 ---
 Revised schedule:
 2 hours set up -- design  / layout (done)
@@ -64,7 +64,7 @@ Minor model update.  I forgot to include ImageTag in the original model generati
 Code tests pass!  I need to add a few more tests, then start on seed data
 _50 minutes consumed, 2 hr 40 minutes total_
 
-Saturday Afternoon: 5:00 pm
+===Saturday Afternoon: 5:00 pm
 ---
 Arg!  selection belongs_to an image.  Got to add that.  Arg2!  Tag belongs_to a selection.  Was I on crack this morning?
 Fixed both, tests pass.
@@ -73,7 +73,7 @@ Seed data added.  Time to fire up the crud interface!  And it works!!
 
 _30 minutes consumed.  3 hours 10 minutes total_
 
-Saturday night, 8:50 pm.
+===Saturday night, 8:50 pm.
 Time to start layout.  Since I'm not using any kind of user model or individual configuration, time to code the first screen (display an image).
 
 We first need an index page, so I'll add one.
@@ -82,7 +82,7 @@ Done.  Images show.  Now they need to be scaled.
 
 _35 minutes consumed, 3 hours 45 minutes total_
 
-Sunday afernoon, 1:45 pm
+===Sunday afernoon, 1:45 pm
 ---
 Fixed up the size using html.  Probably want to do this using CSS.  We'll want the entire layout in bootstrap BTW.  Add it at the top of the TODO
 I'll move on to the main screen, and revisit the index page when that's done.  I want the app functional before I make it pretty.
@@ -96,7 +96,7 @@ I don't know how to draw the annotation.  Don't want this to slow me down.  I'll
 
 _50 minutes consumed 4 hours 35 minutes total_
 
-Sunday Afternoon, 4:45 pm
+===Sunday Afternoon, 4:45 pm
 ---
 Going to put a selection using a div, and fake its appearence with a passed parameter.  Time to get going on the rest of the layout!
 
@@ -104,7 +104,7 @@ Got the elements of the "selection" section in place.  These need to be laid out
 
 _50 minutes consumed, 5 hours 25 minutes total_
 
-Sunday Evening, 8 pm
+===Sunday Evening, 8 pm
 ---
 The CSS debt gets bigger.  I'll want to move the sections created into partials for ease of editing and organization.
 Ok, I'm running out of time.  I'll use some much dirtier methods with nested routes to avoid some of the multiple-form stuff
@@ -116,7 +116,8 @@ We'll get this online, then do some minor cleanup.
 
 _1 hr consumed, 7 hrs 15 minutes total_
 
-Monday morning, 9 am.
+===Monday morning, 9 am.
+---
 Getting code in github and on AWS.  Then, I'll take the remaining time to link together the various sections
 For AWS, it'll be dead-simple.  An external load-balancer pointed into a single backing instance running passenger.
 
@@ -127,7 +128,13 @@ Machine is set up, rails installed, nginx installed, and the app is working and 
 
 _50 minutes consumed, 8 hours 5 minutes total_
 
+===Monday morning, 10:00 am
 ---
+The code is now running on AWS via passenger.  Major accomplishment.  Last step is to add a default page, then write up what I've done, what I'd do, and see how it's viewed
+
+_70 minutes consumed, 9 hours 10 minutes total_
+
+
 
 ---
 ==TODO
