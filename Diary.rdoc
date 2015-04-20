@@ -146,8 +146,3 @@ done.  I'm out of time!!!!!
 <em>40 minutes consumed, 10 hours total</em>
 
 ---
-==TODO
-Migrate to bootstrap
-Use a javascript library to draw rectangle (Zurb or annotator?)
-Revisit flat tag space concept
-Migrate to postgres

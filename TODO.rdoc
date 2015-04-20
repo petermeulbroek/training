@@ -1,0 +1,32 @@
+==TODO
+
+What I've created is a foundation for an app, not an app.  Though I
+took a bit longer than the minimum (this represents about 10 hours
+work), there's enough to set up an individual or team to move fairly
+quickly.
+
+==If I had a day....
+
+I'd fix up the sitemap.  One of the major nouns (selections) is
+correctly subservient to images.  Image tags need to go there as well.
+Tags need to go under selections.  Types need to stop being a site
+noun, and get interwoven with Tags.
+
+I'd also add bootstrap.  Current layout is abominable, and bootstrap can
+add some quick css love.
+
+==If I had a week....
+
+I'd figure out the actual creation of the
+selection.  This should be on the client side, with coordinates
+submitted to the server.  Display of selections can be client side
+with some fancy svg magic
+
+I'd probably also move to postgres.  Currently, the app uses sqlite.
+Performance isn't an issue, but if anyone is actually going to test
+the test site, it needs to have a real backend.
+
+==If I had a month....
+
+I'd revisit my tag structure.  The current flat structure is
+cumbersome, and should be rethought
