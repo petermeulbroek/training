@@ -21,30 +21,3 @@ This is an application to built to demonstrate a tagging utility.  It'll have th
 2.  New files are put in that bucket by another process.  That process is independant of this app.  That same process provides a manifest of files to be pulled.
 
 
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
