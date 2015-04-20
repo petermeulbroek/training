@@ -1,9 +1,0 @@
-<p>To add another selection, use your mouse</p>
-<%= form_for(@image, {url: {action: "set_selection"} }) do |f| %>
-    <div class="field">
-        <%= collection_select(:selection, :ordinal, @image.selections, :id, :ordinal) %>
-    </div>
-    <div class="actions">
-        <%= f.submit "choose selection"%>
-    </div>
-<% end %>
