@@ -1,4 +1,6 @@
-Friday Evening, 7:20 pm.
+==Diary
+*Friday Evening, 7:20 pm.*
+---
 Started code.  Created the initial rails scaffolding (sans data model) to get some place to put docs, as well as created a git repo.  I'll post this to github later.
 
 Some initial thoughts:
@@ -17,9 +19,10 @@ Some initial thoughts:
 
 6. If there's time, start working on the javascript.  Save this for last, as it's my weakest part, and could be a huge time sink.
 
-==== 20 min consumed ===
+_20 min consumed_
 
 Friday Evening, 8:00 pm
+---
 Working on ERD.  The classes are:
 Image -- the representation of the remotely-stored image.
 ImageTag -- meta-information on the image.  Might include a category, e.g.  We don't know, so let's leave this open
@@ -27,13 +30,16 @@ Selection -- One or more cuts from the image.  A geometric selection of a partic
 SelectionTag -- Constrained tag of the selection.  We constrain this to avoid variations on a theme:  "green" = "Green" = "go" are all the same values for a stop light that is green.
 Type -- the constrained (but extensible) set for selection_tags.  Note that these may well be in a hierarchy, but we'll fake that for now by adding a delimiter in the name field, so that "Status|Color" and "Status|Working" are related by convention.
 
-==== 25 minutes consumed, 45 minutes total ====
+_25 minutes consumed, 45 minutes total_
 
 Friday evening, 8:45 pm
+---
 Worked on wireframes.  I've gotten the idea that there can be multiple selections in each photo, and multiple tags for each selection.  I think there should be some hierarchy to the tags structure -- It feels clumsy that all the tags are on the same level.  With more time, I would divide the tags into some sort of hierarchy, to ease navigation.  It should be very fast to choose "stoplight" (or even have that preset), then identify the three things about a stoplight (working/not working, color, "has-left-turn-signal").  I'll implement what I have so far, and go back (if there's time)
 
-==== 35 minutes consumed, 1 hr 20 minutes total ====
+_35 minutes consumed, 1 hr 20 minutes total_
+
 Saturday morning, 9:00 am
+---
 Added a missing wireframe (tag CRUD).  I don't like my scheme where I present the flat tag space.  I think it puts too much on the user.  Ah well, nothing for it.  I'll put that on the todo list.  The first item on the TODO list:  create a TODO list!
 Time to start creating models!
 
@@ -43,9 +49,10 @@ Note:  renamed SelectionTag to be Tag, so that the join table could be selection
 
 Generated the models, but there's a bit of fixup.  They need to be hand-tweeked, db:migrate, db:seed, and tests fixed.  After that, constraints.
 
-==== 30 minutes consumed, 1 hr 50 minutes total ====
-Saturday afternoon:  3:10 pm
+_30 minutes consumed, 1 hr 50 minutes total_
 
+Saturday afternoon:  3:10 pm
+---
 Revised schedule:
 2 hours set up -- design  / layout (done)
 *2 hours model + controller -- create / constrain / seed / test
@@ -55,15 +62,16 @@ Revised schedule:
 Minor model update.  I forgot to include ImageTag in the original model generation, which was serendipitous, as I think we can get away with a one-to-many (simpler).
 
 Code tests pass!  I need to add a few more tests, then start on seed data
-==== 50 minutes consumed, 2 hr 40 minutes total ====
+_50 minutes consumed, 2 hr 40 minutes total_
 
 Saturday Afternoon: 5:00 pm
+---
 Arg!  selection belongs_to an image.  Got to add that.  Arg2!  Tag belongs_to a selection.  Was I on crack this morning?
 Fixed both, tests pass.
 
 Seed data added.  Time to fire up the crud interface!  And it works!!
 
-==== 30 minutes consumed.  3 hours 10 minutes total ===
+_30 minutes consumed.  3 hours 10 minutes total_
 
 Saturday night, 8:50 pm.
 Time to start layout.  Since I'm not using any kind of user model or individual configuration, time to code the first screen (display an image).
@@ -72,9 +80,10 @@ We first need an index page, so I'll add one.
 
 Done.  Images show.  Now they need to be scaled.  
 
-==== 35 minutes consumed, 3 hours 45 minutes total ====
+_35 minutes consumed, 3 hours 45 minutes total_
 
 Sunday afernoon, 1:45 pm
+---
 Fixed up the size using html.  Probably want to do this using CSS.  We'll want the entire layout in bootstrap BTW.  Add it at the top of the TODO
 I'll move on to the main screen, and revisit the index page when that's done.  I want the app functional before I make it pretty.
 
@@ -85,24 +94,43 @@ c.  Add tags
 .. time passes ..
 I don't know how to draw the annotation.  Don't want this to slow me down.  I'll add it to the backlog, and fake it by drawing a rectangle
 
-
-==== 50 minutes consumed 4 hours 35 minutes total ====
+_50 minutes consumed 4 hours 35 minutes total_
 
 Sunday Afternoon, 4:45 pm
+---
 Going to put a selection using a div, and fake its appearence with a passed parameter.  Time to get going on the rest of the layout!
 
 Got the elements of the "selection" section in place.  These need to be laid out with css
 
-==== 50 minutes consumed, 5 hours 25 minutes total ===
+_50 minutes consumed, 5 hours 25 minutes total_
 
 Sunday Evening, 8 pm
+---
 The CSS debt gets bigger.  I'll want to move the sections created into partials for ease of editing and organization.
 Ok, I'm running out of time.  I'll use some much dirtier methods with nested routes to avoid some of the multiple-form stuff
 
-== 50 minutes consumed, 6 hours 15 minutes total ====
+_50 minutes consumed, 6 hours 15 minutes total_
 
+Out of time.  I need to simplify this by using the forms from Rails, which give me crud actions for everything.
+We'll get this online, then do some minor cleanup.
 
-TODO
+_1 hr consumed, 7 hrs 15 minutes total_
+
+Monday morning, 9 am.
+Getting code in github and on AWS.  Then, I'll take the remaining time to link together the various sections
+For AWS, it'll be dead-simple.  An external load-balancer pointed into a single backing instance running passenger.
+
+To get the machine ready, I need to install rvm, rails, and nginx
+I also need to configure the app for passenger
+
+Machine is set up, rails installed, nginx installed, and the app is working and serving in developer mode.  Still need to tweek security zones and make sure passenger is behaving.
+
+_50 minutes consumed, 8 hours 5 minutes total_
+
+---
+
+---
+==TODO
 Migrate to bootstrap
 Use a javascript library to draw rectangle (Zurb or annotator?)
 Revisit flat tag space concept
