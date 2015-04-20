@@ -15,7 +15,7 @@
   <tbody>
     <% @image_tags.each do |image_tag| %>
       <tr>
-        <td><%= image_tag.image %></td>
+        <td><%= image_tag(image_tag.image.url, width: "50%") %></td>
         <td><%= image_tag.name %></td>
         <td><%= image_tag.value %></td>
         <td><%= link_to 'Show', image_tag %></td>

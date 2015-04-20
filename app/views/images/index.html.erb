@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Image</th>
-      <th>Delete</th>
+        <th>Image</th>
+        <th>Image Tags</th>
+        <th>Destroy</th>
     </tr>
   </thead>
 
@@ -14,7 +15,14 @@
     <% @images.each do |image| %>
       <tr>
           <td><%= link_to  image_tag(image.url, width: "50%", class: (image.reviewed ? "img_reviewed" : "img_unreviewed") ), image_path(image)%></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+              <ul>
+              <% image.image_tags.each do |t| %>
+                  <li><%= t.name %> | <%= t.value %></li>
+              <% end %>
+              </ul>
+          </td>
+          <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
