@@ -69,7 +69,6 @@ class TagsController < ApplicationController
     end
 
     def set_type
-      byebug
       @type = Type.find(tag_params[:type_id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
