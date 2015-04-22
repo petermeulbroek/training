@@ -1,29 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<div class="image">
-    <%= image_tag @image.url %>
+<div class="row">
+    <div class="col-md-4">
+        <%= render partial: 'images/image', locals: {image: @image} %>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <%= render partial: 'index_list', locals: {image: @image, selections: [@selection]} %>
+    </div>
 </div>
 
-<p>
-  <strong>Start x:</strong>
-  <%= @selection.start_x %>
-</p>
 
-<p>
-  <strong>Start y:</strong>
-  <%= @selection.start_y %>
-</p>
-
-<p>
-  <strong>End x:</strong>
-  <%= @selection.end_x %>
-</p>
-
-<p>
-  <strong>End y:</strong>
-  <%= @selection.end_y %>
-</p>
 
 <%= link_to 'Add tag', new_tag_path %><br/>
 <%= link_to 'Edit', edit_image_selection_path(@image, @selection) %> |
-<%= link_to 'Back', image_selections_path(@image) %>
+<%= link_to 'Back', image_path(@image) %>

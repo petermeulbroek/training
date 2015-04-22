@@ -9,12 +9,13 @@
         </tr>
     </thead>
     <tbody>
-        <% image.selections.each do |selection| %>
+        <% selections.each do |selection| %>
             <tr>
-                <td><%= selection.start_x %></td>
-                <td><%= selection.start_y %></td>
-                <td><%= selection.end_x %></td>
-                <td><%= selection.end_y %></td>
+                
+                <td><%= link_to selection.start_x, image_selection_path(image, selection) %></td>
+                <td><%= link_to selection.start_y, image_selection_path(image, selection) %></td>
+                <td><%= link_to selection.end_x, image_selection_path(image, selection) %></td>
+                <td><%= link_to selection.end_y, image_selection_path(image, selection) %></td>
                 <td><%= link_to 'Edit', edit_image_selection_path(image, selection), :class => 'btn btn-mini' %></td>
                 <td><%= link_to 'Destroy', image_selection_path(image, selection), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %></td>
             </tr>
