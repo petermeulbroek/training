@@ -12,12 +12,12 @@
         <% selections.each do |selection| %>
             <tr>
                 
-                <td><%= link_to selection.start_x, image_selection_path(image, selection) %></td>
-                <td><%= link_to selection.start_y, image_selection_path(image, selection) %></td>
-                <td><%= link_to selection.end_x, image_selection_path(image, selection) %></td>
-                <td><%= link_to selection.end_y, image_selection_path(image, selection) %></td>
-                <td><%= link_to 'Edit', edit_image_selection_path(image, selection), :class => 'btn btn-mini' %></td>
-                <td><%= link_to 'Destroy', image_selection_path(image, selection), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %></td>
+                <td><%= link_to selection.start_x, selection %></td>
+                <td><%= link_to selection.start_y, selection %></td>
+                <td><%= link_to selection.end_x, selection %></td>
+                <td><%= link_to selection.end_y, selection %></td>
+                <td><%= link_to 'Edit', edit_selection_path(selection), :class => 'btn btn-mini' %></td>
+                <td><%= link_to 'Destroy', selection, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %></td>
             </tr>
         <% end %>
     </tbody>

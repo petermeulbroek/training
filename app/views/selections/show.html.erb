@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-    <div class="col-md-4">
-        <%= render partial: 'images/image', locals: {image: @image} %>
+    <div class="col-md-6">
+        <%= render partial: 'images/image', locals: {image: @selection.image} %>
     </div>
-
+    <div class="col-md-6">
+        
+    </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <%= render partial: 'index_list', locals: {image: @image, selections: [@selection]} %>
+        <%= render partial: 'index_list', locals: {image: @selection.image, selections: [@selection]} %>
     </div>
 </div>
 
 
 
 <%= link_to 'Add tag', new_tag_path %><br/>
-<%= link_to 'Edit', edit_image_selection_path(@image, @selection) %> |
-<%= link_to 'Back', image_path(@image) %>
+<%= link_to 'Edit', edit_selection_path(@selection) %> |
+<%= link_to 'Back', image_path(@selection.image) %>

@@ -1,6 +1,6 @@
 class SelectionsController < ApplicationController
   before_action :set_selection, only: [:show, :edit, :update, :destroy]
-  before_action :set_image
+  before_action :set_image, except: [:edit, :show]
   # GET /selections
   # GET /selections.json
   def index
@@ -29,7 +29,7 @@ class SelectionsController < ApplicationController
     
     respond_to do |format|
       if @selection.save
-        format.html { redirect_to image_selection_url(@image, @selection), notice: 'Selection was successfully created.' }
+        format.html { redirect_to image_url(@image), notice: 'Selection was successfully created.' }
         format.json { render :show, status: :created, location: @selection }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class SelectionsController < ApplicationController
   def update
     respond_to do |format|
       if @selection.update(selection_params)
-        format.html { redirect_to image_selection_url(@image, @selection), notice: 'Selection was successfully updated.' }
+        format.html { redirect_to image_url(@image), notice: 'Selection was successfully updated.' }
         format.json { render :show, status: :ok, location: @selection }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class SelectionsController < ApplicationController
   def destroy
     @selection.destroy
     respond_to do |format|
-      format.html { redirect_to image_selections_url(@image), notice: 'Selection was successfully destroyed.' }
+      format.html { redirect_to image_url(@image), notice: 'Selection was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
