@@ -1,4 +1,4 @@
-<%= form_for([@image, @selection]) do |f| %>
+<%= form_for([@image, @selection], html: {class: 'form-horizontal'}) do |f| %>
   <% if @selection.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@selection.errors.count, "error") %> prohibited this selection from being saved:</h2>

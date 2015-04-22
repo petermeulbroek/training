@@ -25,7 +25,8 @@ class SelectionsController < ApplicationController
   # POST /selections.json
   def create
     @selection = Selection.new(selection_params)
-
+    @selection.image = @image
+    
     respond_to do |format|
       if @selection.save
         format.html { redirect_to image_selection_url(@image, @selection), notice: 'Selection was successfully created.' }
