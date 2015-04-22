@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th data-field="start_x">X1</th>
+            <th data-field="start_y">Y1</th>
+            <th data-field="end_x">X2</th>
+            <th data-field="end_y">Y1</th>
+            <th colspan="2"> Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% image.selections.each do |selection| %>
+            <tr>
+                <td><%= selection.start_x %></td>
+                <td><%= selection.start_y %></td>
+                <td><%= selection.end_x %></td>
+                <td><%= selection.end_y %></td>
+                <td><%= link_to 'Edit', edit_image_selection_path(image, selection), :class => 'btn btn-mini' %></td>
+                <td><%= link_to 'Destroy', image_selection_path(image, selection), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

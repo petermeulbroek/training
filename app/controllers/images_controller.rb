@@ -12,7 +12,8 @@ class ImagesController < ApplicationController
   def show
     # put click logic here
     if params['clicked']
-      @image.selections.build(ordinal: @image.selections.length)
+      # selection = @image.selections.build(ordinal: @image.selections.length)
+      
     end
 
     # selections
