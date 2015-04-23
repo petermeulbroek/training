@@ -1,10 +1,10 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-  before_action :set_type, only: [:create, :update]
+  before_action :set_selection, only: [:new, :create, :index]
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.where(selection: @selection)
   end
 
   # GET /tags/1
@@ -15,6 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
+    @tag.selection = @selection
   end
 
   # GET /tags/1/edit
@@ -25,7 +26,8 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = Tag.new(tag_params)
-    @tag.type = @type
+    @tag.selection = @selection
+    
     respond_to do |format|
       if @tag.save
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
@@ -57,7 +59,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to selection_tags_url(@tag.selection), notice: 'Tag was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,9 +70,10 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 
-    def set_type
-      @type = Type.find(tag_params[:type_id])
+    def set_selection
+      @selection = Selection.find(params[:selection_id])
     end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:type_id, :value)

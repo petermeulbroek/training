@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SelectionsControllerTest < ActionController::TestCase
   setup do
-    @selection = selections(:one)
+    @selection = selections(:selection1)
   end
 
   test "should get index" do

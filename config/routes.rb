@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get '/', to: 'pages#index'
-
-  redirect('/images')
+  get '/', to: 'pages#index' #redirect('/images')
 
   resources :image_tags
 
-  resources :tags
+  # resources :tags
 
   resources :types
 
@@ -17,6 +15,11 @@ Rails.application.routes.draw do
     end
 
     resources :selections, shallow: true
+  end
+
+  resources :selections, only: [:show] do
+    resources :tags, shallow: true
+    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

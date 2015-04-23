@@ -3,7 +3,7 @@ require 'test_helper'
 class SelectionTest < ActiveSupport::TestCase
 
   setup do
-    @selection = selections(:one)
+    @selection = selections(:selection1)
   end
 
   test "fixture works" do
