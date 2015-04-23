@@ -1,0 +1,21 @@
+<h2>Tags</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% tags.each do |tag| %>
+            <tr>
+                <td class="value"><%= tag.type.name %></td>
+                <td><%= tag.value %></td>
+                <td><%= link_to 'Edit', edit_tag_path(tag), :class => 'btn btn-mini' %></td>
+                <td><%= link_to 'Delete', tag, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

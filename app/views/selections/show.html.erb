@@ -5,7 +5,9 @@
         <%= render partial: 'images/image', locals: {image: @selection.image} %>
     </div>
     <div class="col-md-6">
-        
+        <%= render partial: 'tags/index_list', locals: {tags: @selection.tags} %>
+        <p><%= link_to 'Add tag', new_selection_tag_path(@selection), class: "btn btn-mini" %><br/>
+
     </div>
 </div>
 <div class="row">
@@ -14,8 +16,4 @@
     </div>
 </div>
 
-
-
-<%= link_to 'Add tag', new_selection_tag_path(@selection) %><br/>
-<%= link_to 'Edit', edit_selection_path(@selection) %> |
-<%= link_to 'Back', image_path(@selection.image) %>
+<%= link_to 'Back', image_path(@selection.image), class: "btn btn-mini" %>
