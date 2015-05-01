@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :annotations
+
   get '/', to: 'pages#index' #redirect('/images')
 
   resources :image_tags

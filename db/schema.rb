@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419212248) do
+ActiveRecord::Schema.define(version: 20150501125435) do
+
+  create_table "annotations", force: :cascade do |t|
+    t.integer  "shapes_id"
+    t.string   "src"
+    t.string   "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "annotations", ["shapes_id"], name: "index_annotations_on_shapes_id"
 
   create_table "image_tags", force: :cascade do |t|
     t.integer  "image_id"
@@ -49,9 +59,24 @@ ActiveRecord::Schema.define(version: 20150419212248) do
     t.datetime "updated_at", null: false
     t.integer  "image_id"
     t.integer  "ordinal"
+    t.float    "x"
+    t.float    "y"
+    t.float    "width"
+    t.float    "height"
+    t.string   "units"
   end
 
   add_index "selections", ["image_id"], name: "index_selections_on_image_id"
+
+  create_table "shapes", force: :cascade do |t|
+    t.float    "x"
+    t.float    "y"
+    t.float    "width"
+    t.float    "height"
+    t.string   "units"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.integer  "type_id"
