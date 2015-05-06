@@ -1,3 +1,5 @@
 class Annotation < ActiveRecord::Base
-  belongs_to :shapes
+  has_many :shapes
+  belongs_to :image
+  
 end

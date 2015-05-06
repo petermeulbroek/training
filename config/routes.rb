@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :annotations
 
   get '/', to: 'pages#index' #redirect('/images')
 
@@ -12,11 +11,8 @@ Rails.application.routes.draw do
   # resources :selections
 
   resources :images do
-    member do
-      patch :set_selection
-    end
-
     resources :selections, shallow: true
+    resources :annotations, shallow: true
   end
 
   resources :selections, only: [:show] do

@@ -1,6 +1,6 @@
 class AnnotationsController < ApplicationController
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_image, except: [:edit, :show, :destroy]
   # GET /annotations
   # GET /annotations.json
   def index
@@ -24,8 +24,14 @@ class AnnotationsController < ApplicationController
   # POST /annotations
   # POST /annotations.json
   def create
+    # FIXME: this seems ghetto.  There should be a way to rewrite
+    # params using strong params, and get this done...
     @annotation = Annotation.new(annotation_params)
 
+    shapes_params_array.each do |p|
+      @annotation.shapes << Shape.new(p)
+    end
+    
     respond_to do |format|
       if @annotation.save
         format.html { redirect_to @annotation, notice: 'Annotation was successfully created.' }
@@ -56,7 +62,7 @@ class AnnotationsController < ApplicationController
   def destroy
     @annotation.destroy
     respond_to do |format|
-      format.html { redirect_to annotations_url, notice: 'Annotation was successfully destroyed.' }
+      format.html { redirect_to image_annotations_url(@annotation.image), notice: 'Annotation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +73,21 @@ class AnnotationsController < ApplicationController
       @annotation = Annotation.find(params[:id])
     end
 
+    def set_image
+      @image = Image.find(params[:image_id])
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def annotation_params
-      params.require(:annotation).permit(:shapes_id, :src, :text)
+      # the annotorious library sends the params as json, but the without a content-type header
+      # FIXME:  this will not work for regular html get req
+      params.require(:annotation).permit(:src, :text, :context, shapes: [:type, geometry: [:x, :y, :width, :height]]).slice(:src, :text)
+    end
+
+    def shapes_params_array
+      
+      params[:annotation][:shapes].map do |s|
+        s.require(:geometry).permit(:x, :y, :width, :height)
+      end
     end
 end

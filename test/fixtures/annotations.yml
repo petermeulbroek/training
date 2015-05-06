@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  shapes_id: 
+annotation1:
   src: MyString
   text: MyString
-
-two:
-  shapes_id: 
+  image: image1
+annotation2:
   src: MyString
   text: MyString
+  image: image2
+  

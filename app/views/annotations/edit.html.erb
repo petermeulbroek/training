@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @annotation %> |
-<%= link_to 'Back', annotations_path %>
+<%= link_to 'Back', image_annotations_path(@annotation.image) %>

@@ -1,29 +1,31 @@
 // borrowed (and modified) from https://github.com/sul-dlss/revs/blob/master/app/assets/javascripts/annotate.js
 
 anno.addHandler('onAnnotationCreated', function(annotation) {
-	annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
-	jQuery.ajax({
-		type: "POST",
-		url: "/annotations",
-		dataType: "JSON",
-		data: "annotation="+encodeURIComponent(JSON.stringify(annotation)),
+	  annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
+    // FIXME:  this might fail on firefox
+    image_id = window.location.pathname.match(/\/images\/([0-9]+)/)[1]
+	  jQuery.ajax({
+		  type: "POST",
+		    url: "/images/"+image_id+"/annotations.json",
+        contentType: "application/json; charset=utf-8",
+		  dataType: "JSON",
+		    data: JSON.stringify({annotation: annotation}),
 		success: function(data) {
 	    annotation.id=data.id; // the annotation ID should match the database row ID so we can delete it if needed
-			// updateAnnotationsPanel(data.num_annotations);
-			// these are added so the display to the user is correct for the new annotation; they will be set on the server when the page loads for all annotations
-			// annotation.username='me';
-			// annotation.updated_at='today';
+			  // updateAnnotationsPanel(data.num_annotations);
+			  annotation.updated_at=data.updated_at;
 	  }
 		});
 });
 
 anno.addHandler('onAnnotationUpdated', function(annotation) {
- 	annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
+ 	  annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
+    // nb:  annotations are a shallow resource
 	jQuery.ajax({
 	  type: "PUT",
 		dataType: "JSON",
 	  url: "/annotations/" + annotation.id,
-	  data: "annotation="+encodeURIComponent(JSON.stringify(annotation)) //,
+	  data: JSON.stringify(annotation)) //,
 		//success: function(data) {
 		//	updateAnnotationsPanel(data.num_annotations);
 	  //}	
@@ -49,20 +51,20 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
 });
 
 // this plug allows us to add the username and date to each annotation and display it
-annotorious.plugin.addUsernamePlugin = function(opt_config_options) { }
-annotorious.plugin.addUsernamePlugin.prototype.onInitAnnotator = function(annotator) {
-  // A Field can be an HTML string or a function(annotation) that returns a string
-	  annotator.popup.addField(function(annotation) { 
-		 	if (annotation.username != '') {
-	    	return '<em>from ' + annotation.username + ' - '+ annotation.updated_at +'</em>'
-		  }
-		else
-		 {
-			 return ''
-			}
-	  });
-}
-anno.addPlugin('addUsernamePlugin', {});	
+// annotorious.plugin.addUsernamePlugin = function(opt_config_options) { }
+// annotorious.plugin.addUsernamePlugin.prototype.onInitAnnotator = function(annotator) {
+//   // A Field can be an HTML string or a function(annotation) that returns a string
+// 	  annotator.popup.addField(function(annotation) { 
+// 		 	if (annotation.username != '') {
+// 	    	return '<em>from ' + annotation.username + ' - '+ annotation.updated_at +'</em>'
+// 		  }
+// 		else
+// 		 {
+// 			 return ''
+// 			}
+// 	  });
+// }
+// anno.addPlugin('addUsernamePlugin', {});	
 
 function updateAnnotationsPanel(num_annotations) {
 	$(".num-annotations-badge").text(num_annotations); // update the total annotations badge
@@ -72,8 +74,8 @@ function updateAnnotationsPanel(num_annotations) {
 }
 
 function showAnnotations() {	
-	togglePURLEmbed();
-	toggleThumbImage();
+//	togglePURLEmbed();
+//toggleThumbImage();
 	loadAnnotations();
 	enableAnnotations();
 }
@@ -88,7 +90,9 @@ function enableAnnotations() {
 }
 
 function loadAnnotations() {
-	jQuery.getJSON("/annotations/for_image/"+druid()+ ".json",function(data) {
+    var id = window.location.pathname.match(/\/images\/([0-9]+)/)[1]
+    
+	  jQuery.getJSON("/images/"+id+"annotations.json",function(data) {
 		for (var i = 0; i < data.length; i++) {
 				annotation = JSON.parse(data[i].json)
         anno.addAnnotation(annotation);
@@ -122,24 +126,24 @@ $(document).ready(function(){
 	
 	$('#annotate_link').click(function() { 
 		showAnnotations(); 
-    toggleLinks();
-    toggleAnnotationList();
+//    toggleLinks();
+//    toggleAnnotationList();
 		return false;
 	 });
 	
 	$('#view_annotations_link').click(function() {
 		 showAnnotations(); 
-		 disableNewAnnotations(); 
-     toggleLinks();
-     toggleAnnotationList();
+	//	 disableNewAnnotations(); 
+  //   toggleLinks();
+  //   toggleAnnotationList();
 		 return false;
 	 });
 
-	$('#hide_annotations_link').click(function() {
-		 hideAnnotations(); 
-		 toggleLinks();
-		 toggleAnnotationList();
-		 return false;
-	 });
+	//$('#hide_annotations_link').click(function() {
+	//	 hideAnnotations(); 
+	//	 toggleLinks();
+	//	 toggleAnnotationList();
+	//	 return false;
+	// });
 	
 });

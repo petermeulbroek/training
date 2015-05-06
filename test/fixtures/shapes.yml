@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+shape1:
   x: 1.5
   'y': 1.5
   width: 1.5
   height: 1.5
   units: MyString
+  annotation: annotation1
 
-two:
+shape2:
   x: 1.5
   'y': 1.5
   width: 1.5
   height: 1.5
   units: MyString
+  annotation: annotation2

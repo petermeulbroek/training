@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require annotorious.min.js
+//= require annotate
 //= require_tree .
