@@ -5,15 +5,15 @@ anno.addHandler('onAnnotationCreated', function(annotation) {
     // FIXME:  this might fail on firefox
     image_id = window.location.pathname.match(/\/images\/([0-9]+)/)[1]
 	  jQuery.ajax({
-		  type: "POST",
+		    type: "POST",
 		    url: "/images/"+image_id+"/annotations.json",
         contentType: "application/json; charset=utf-8",
-		  dataType: "JSON",
+		    dataType: "JSON",
 		    data: JSON.stringify({annotation: annotation}),
-		success: function(data) {
-	    annotation.id=data.id; // the annotation ID should match the database row ID so we can delete it if needed
-			  // updateAnnotationsPanel(data.num_annotations);
-			  annotation.updated_at=data.updated_at;
+		    success: function(data) {
+	          annotation.id=data.id; // the annotation ID should match the database row ID so we can delete it if needed
+			      // updateAnnotationsPanel(data.num_annotations);
+			      annotation.updated_at=data.updated_at;
 	  }
 		});
 });
@@ -22,10 +22,10 @@ anno.addHandler('onAnnotationUpdated', function(annotation) {
  	  annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
     // nb:  annotations are a shallow resource
 	jQuery.ajax({
-	  type: "PUT",
-		dataType: "JSON",
-	  url: "/annotations/" + annotation.id,
-	  data: JSON.stringify(annotation)) //,
+	    type: "PUT",
+		  dataType: "JSON",
+	    url: "/annotations/" + annotation.id,
+	    data: JSON.stringify({annotation: annotation}) //,
 		//success: function(data) {
 		//	updateAnnotationsPanel(data.num_annotations);
 	  //}	
