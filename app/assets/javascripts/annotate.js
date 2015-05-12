@@ -74,7 +74,7 @@ function updateAnnotationsPanel(num_annotations) {
 }
 
 function showAnnotations() {	
-//	togglePURLEmbed();
+//	Togglepurlembed();
 //toggleThumbImage();
 	loadAnnotations();
 	enableAnnotations();
