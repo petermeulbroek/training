@@ -67,17 +67,17 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
 // anno.addPlugin('addUsernamePlugin', {});	
 
 function updateAnnotationsPanel(num_annotations) {
-	$(".num-annotations-badge").text(num_annotations); // update the total annotations badge
-	$(".num-annotations-badge").removeClass('hidden');
+	  $(".num-annotations-badge").text(num_annotations); // update the total annotations badge
+	  $(".num-annotations-badge").removeClass('hidden');
 	  $("#all-annotations").load("/annotations/for_image/");// re-render the annotations panel
-	$('#all-annotations').removeClass('hidden-offscreen hidden'); // be sure it is visible
+	  $('#all-annotations').removeClass('hidden-offscreen hidden'); // be sure it is visible
 }
 
 function showAnnotations() {	
-//	Togglepurlembed();
-//toggleThumbImage();
-	loadAnnotations();
-	enableAnnotations();
+    //	togglePURLEmbed();
+    //toggleThumbImage();
+	  loadAnnotations();
+	  // enableAnnotations();
 }
 
 function hideAnnotations() {
@@ -92,10 +92,11 @@ function enableAnnotations() {
 function loadAnnotations() {
     var id = window.location.pathname.match(/\/images\/([0-9]+)/)[1]
     
-	  jQuery.getJSON("/images/"+id+"annotations.json",function(data) {
-		for (var i = 0; i < data.length; i++) {
-				annotation = JSON.parse(data[i].json)
-        anno.addAnnotation(annotation);
+	  jQuery.getJSON("/images/"+id+"/annotations.json",function(data) {
+        var annotations = data.annotations
+		    for (var i = 0; i < annotations.length; i++) {
+            console.log(annotations[i])
+            anno.addAnnotation(annotations[i]);
 			}
 	});
 }
@@ -123,7 +124,8 @@ function toggleAnnotationList(){
 }
 
 $(document).ready(function(){
-	
+
+    
 	$('#annotate_link').click(function() { 
 		showAnnotations(); 
 //    toggleLinks();

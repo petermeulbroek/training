@@ -4,7 +4,7 @@ class AnnotationsController < ApplicationController
   # GET /annotations
   # GET /annotations.json
   def index
-    @annotations = Annotation.all
+    @annotations = Annotation.where(image: @image)
   end
 
   # GET /annotations/1
@@ -27,7 +27,7 @@ class AnnotationsController < ApplicationController
     # FIXME: this seems ghetto.  There should be a way to rewrite
     # params using strong params, and get this done...
     @annotation = Annotation.new(annotation_params)
-
+    @image.annotations << @annotation
     shapes_params_array.each do |p|
       @annotation.shapes << Shape.new(p)
     end

@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+        <th>Text</th>
+        <th>X</th>
+        <th>Y</th>
+        <th>Width</th>
+        <th>Height</th>
+        <td colspan="2">Actions</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% annotations.each do |annotation| %>
+      <tr>
+          <td><%= annotation.text %></td>
+          <td><%=  annotation.shapes.first.x %></td>
+          <td><%=  annotation.shapes.first.y %></td>
+          <td><%=  annotation.shapes.first.width %></td>
+          <td><%=  annotation.shapes.first.height %></td>
+        <td><%= link_to 'Edit', edit_annotation_path(annotation) %></td>
+        <td><%= link_to 'Destroy', annotation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
