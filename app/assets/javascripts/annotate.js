@@ -97,8 +97,8 @@ function loadAnnotations() {
 		    for (var i = 0; i < annotations.length; i++) {
             console.log(annotations[i])
             anno.addAnnotation(annotations[i]);
-			}
-	});
+			  }
+	  });
 }
 
 function togglePURLEmbed() {
