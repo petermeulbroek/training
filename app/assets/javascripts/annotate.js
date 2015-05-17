@@ -13,6 +13,7 @@ anno.addHandler('onAnnotationCreated', function(annotation) {
 		    success: function(data) {
 	          annotation.id=data.id; // the annotation ID should match the database row ID so we can delete it if needed
 			      // updateAnnotationsPanel(data.num_annotations);
+            addAnnotationToTable(annotation);
 			      annotation.updated_at=data.updated_at;
 	  }
 		});
@@ -25,10 +26,10 @@ anno.addHandler('onAnnotationUpdated', function(annotation) {
 	    type: "PUT",
 		  dataType: "JSON",
 	    url: "/annotations/" + annotation.id,
-	    data: JSON.stringify({annotation: annotation}) //,
-		//success: function(data) {
-		//	updateAnnotationsPanel(data.num_annotations);
-	  //}	
+	    data: JSON.stringify({annotation: annotation}), 
+		success: function(data) {
+			  // updateAnnotationsPanel(data.num_annotations);
+	  }	
 	});
 });
 
@@ -43,10 +44,13 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
 	jQuery.ajax({
 	  type: "DELETE",
 		dataType: "JSON",
-	  url: "/annotations/" + annotation.id //,
-		//success: function(data) {
-		//	updateAnnotationsPanel(data.num_annotations);
-	  //}	
+	  url: "/annotations/" + annotation.id,
+		  success: function(data) {
+          // let's delete the appropriate row
+          deleteAnnotationFromTable(annotation);
+          
+		      //	updateAnnotationsPanel(data.num_annotations);
+	    }	
 	});
 });
 
@@ -66,11 +70,39 @@ anno.addHandler('onAnnotationRemoved', function(annotation) {
 // }
 // anno.addPlugin('addUsernamePlugin', {});	
 
-function updateAnnotationsPanel(num_annotations) {
-	  $(".num-annotations-badge").text(num_annotations); // update the total annotations badge
-	  $(".num-annotations-badge").removeClass('hidden');
-	  $("#all-annotations").load("/annotations/for_image/");// re-render the annotations panel
-	  $('#all-annotations').removeClass('hidden-offscreen hidden'); // be sure it is visible
+//function updateAnnotationsPanel(num_annotations) {
+//	  $(".num-annotations-badge").text(num_annotations); // update the total annotations badge
+//	  $(".num-annotations-badge").removeClass('hidden');
+//	  $("#all-annotations").load("/annotations/for_image/");// re-render the annotations panel
+//	  $('#all-annotations').removeClass('hidden-offscreen hidden'); // be sure it is visible
+//}
+
+function addAnnotationToTable(annotation) {
+    var table = document.getElementById("annotations-list-body");
+    var row = table.insertRow();
+    row.id = annotation.id
+    
+    // add the elements from annotation
+    var text = document.createTextNode(annotation.text)
+    row.insertCell().appendChild(text)
+
+    text = document.createTextNode(annotation.shapes[0].geometry.x)
+    row.insertCell().appendChild(text)
+
+    text = document.createTextNode(annotation.shapes[0].geometry.y)
+    row.insertCell().appendChild(text)
+
+    text = document.createTextNode(annotation.shapes[0].geometry.width)
+    row.insertCell().appendChild(text)
+
+    text = document.createTextNode(annotation.shapes[0].geometry.height)
+    row.insertCell().appendChild(text)
+}
+
+function deleteAnnotationFromTable(annotation) {
+    var table = document.getElementById("annotations-list-body");
+    var row = document.getElementById(annotation.id);
+    table.deleteRow(row.rowIndex - 1);
 }
 
 function showAnnotations() {	
