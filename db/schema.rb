@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501192442) do
+ActiveRecord::Schema.define(version: 20150519015126) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "src"
@@ -23,50 +23,12 @@ ActiveRecord::Schema.define(version: 20150501192442) do
 
   add_index "annotations", ["image_id"], name: "index_annotations_on_image_id"
 
-  create_table "image_tags", force: :cascade do |t|
-    t.integer  "image_id"
-    t.string   "name"
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "image_tags", ["image_id"], name: "index_image_tags_on_image_id"
-
   create_table "images", force: :cascade do |t|
     t.string   "url"
     t.boolean  "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "selection_tags", force: :cascade do |t|
-    t.integer  "selection_id"
-    t.integer  "tag_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "selection_tags", ["selection_id"], name: "index_selection_tags_on_selection_id"
-  add_index "selection_tags", ["tag_id"], name: "index_selection_tags_on_tag_id"
-
-  create_table "selections", force: :cascade do |t|
-    t.integer  "start_x"
-    t.integer  "start_y"
-    t.integer  "end_x"
-    t.integer  "end_y"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "image_id"
-    t.integer  "ordinal"
-    t.float    "x"
-    t.float    "y"
-    t.float    "width"
-    t.float    "height"
-    t.string   "units"
-  end
-
-  add_index "selections", ["image_id"], name: "index_selections_on_image_id"
 
   create_table "shapes", force: :cascade do |t|
     t.float    "x"
@@ -84,12 +46,12 @@ ActiveRecord::Schema.define(version: 20150501192442) do
   create_table "tags", force: :cascade do |t|
     t.integer  "type_id"
     t.string   "value"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "selection_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "image_id"
   end
 
-  add_index "tags", ["selection_id"], name: "index_tags_on_selection_id"
+  add_index "tags", ["image_id"], name: "index_tags_on_image_id"
   add_index "tags", ["type_id"], name: "index_tags_on_type_id"
 
   create_table "types", force: :cascade do |t|
