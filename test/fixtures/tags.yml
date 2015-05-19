@@ -3,8 +3,8 @@
 one:
   type: type1
   value: MyString
-  selection: selection1
+  image: image1
 two:
   type: type1
   value: MyString
-  selection: selection2
+  image: image2

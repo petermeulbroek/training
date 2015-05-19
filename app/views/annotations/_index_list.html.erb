@@ -6,7 +6,6 @@
         <th>Y</th>
         <th>Width</th>
         <th>Height</th>
-        <td colspan="1">Actions</td>
     </tr>
   </thead>
 
@@ -18,7 +17,6 @@
           <td><%=  annotation.shapes.first.y %></td>
           <td><%=  annotation.shapes.first.width %></td>
           <td><%=  annotation.shapes.first.height %></td>
-        <td><%= link_to 'Edit', edit_annotation_path(annotation) %></td>
       </tr>
     <% end %>
   </tbody>

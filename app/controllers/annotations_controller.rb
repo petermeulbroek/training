@@ -1,6 +1,6 @@
 class AnnotationsController < ApplicationController
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
-  before_action :set_image, except: [:edit, :show, :destroy]
+  before_action :set_image, except: [:update, :edit, :show, :destroy]
   # GET /annotations
   # GET /annotations.json
   def index

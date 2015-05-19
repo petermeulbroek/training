@@ -1,10 +1,10 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-  before_action :set_selection, only: [:new, :create, :index]
+  before_action :set_image, only: [:new, :create, :index]
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where(selection: @selection)
+    @tags = Tag.where(image: @image)
   end
 
   # GET /tags/1
@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
-    @tag.selection = @selection
+    @tag.image = @image
   end
 
   # GET /tags/1/edit
@@ -26,7 +26,7 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = Tag.new(tag_params)
-    @tag.selection = @selection
+    @tag.image = @image
     
     respond_to do |format|
       if @tag.save
@@ -59,7 +59,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to selection_tags_url(@tag.selection), notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to image_tags_url(@tag.image), notice: 'Tag was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,8 +70,8 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 
-    def set_selection
-      @selection = Selection.find(params[:selection_id])
+    def set_image
+      @image = Image.find(params[:image_id])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

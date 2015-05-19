@@ -1,6 +1,7 @@
 // borrowed (and modified) from https://github.com/sul-dlss/revs/blob/master/app/assets/javascripts/annotate.js
 
 anno.addHandler('onAnnotationCreated', function(annotation) {
+    console.log(annotation);
 	  annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
     // FIXME:  this might fail on firefox
     image_id = window.location.pathname.match(/\/images\/([0-9]+)/)[1]
@@ -20,15 +21,16 @@ anno.addHandler('onAnnotationCreated', function(annotation) {
 });
 
 anno.addHandler('onAnnotationUpdated', function(annotation) {
- 	  annotation.context=annotation.context.split("?")[0]; // if the item page has querystring parameters, this causes the JSON.parse to fail on the server, so just strip them off here
-    // nb:  annotations are a shallow resource
-	jQuery.ajax({
-	    type: "PUT",
+    console.log(annotation);
+
+    jQuery.ajax({
+	    type: "PATCH",
 		  dataType: "JSON",
-	    url: "/annotations/" + annotation.id,
+      contentType: "application/json; charset=utf-8",
+	    url: "/annotations/" + annotation.id + ".json",
 	    data: JSON.stringify({annotation: annotation}), 
 		success: function(data) {
-			  // updateAnnotationsPanel(data.num_annotations);
+			  updateAnnotationsTable(annotation);
 	  }	
 	});
 });
@@ -103,6 +105,12 @@ function deleteAnnotationFromTable(annotation) {
     var table = document.getElementById("annotations-list-body");
     var row = document.getElementById(annotation.id);
     table.deleteRow(row.rowIndex - 1);
+}
+
+function updateAnnotationsTable(annotation) {
+    var row = document.getElementById(annotation.id);
+    row.cells[0].innerHTML = annotation.text;
+
 }
 
 function showAnnotations() {	
